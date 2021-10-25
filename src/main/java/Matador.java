@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.*;
+//import gui_main.GUI;
 public class Matador {
     public static void main (String[] args){
       String player1name, player2name; // for player
