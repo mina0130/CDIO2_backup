@@ -38,7 +38,7 @@ public class Matador {
                 }
                 case 5 -> {
                     title = "you entered the monastery. This is a cash free zone";
-                    subtitle = "0";
+                    subtitle = "+0";
                 }
                 case 6 -> {
                     title = "you are in the black cave and had to buy a torch";
@@ -81,7 +81,7 @@ public class Matador {
         player.addPlayer(player2name, 1000);
 
 
-        System.out.println("Which player starts?");
+        System.out.println("Which player starts? (1 or 2)");
         int start = scanner.nextInt();
         player1turn= start == 1;
         while(!won){
