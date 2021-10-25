@@ -6,6 +6,7 @@ public class Matador {
       int count, num1, num2;
       boolean won=false;
       Random dice = new Random();
+      Random dice2 = new Random();
       Scanner scanner = new Scanner(System.in);
       boolean player1turn; // general
       String title, subtitle, head;
@@ -14,53 +15,51 @@ public class Matador {
       //making the board
         count=0;
         while(count<11){
-            switch(count){
-                case 0:{
-                    title="Congratulations! you climbed there tower and earned a reward";
-                subtitle="+250";
+            switch (count) {
+                case 0 -> {
+                    title = "Congratulations! you climbed there tower and earned a reward";
+                    subtitle = "+250";
                 }
-                break;
-                case 1:{
-                    title="your car landed in a crater. You must pay for repair";
-                subtitle="-100";  }
-                break;
-                case 2:{
-                    title="you entered the palace gates, and received a royal welcome gift";
-                subtitle="+100";}
-                break;
-                case 3:{
-                    title="you are stranded in a cold dessert and must light up some cash to survive";
-                subtitle="-20";}
-                break;
-                case 4:{
-                    title="you entered the Walled city and found some money on the road";
-                subtitle="+180";}
-                break;
-                case 5:{
-                    title="you entered the monastery. This is a cash free zone";
-                subtitle="0";}
-                break;
-                case 6:{
-                    title="you are in the black cave and had to buy a torch";
-                subtitle="-70";}
-                break;
-                case 7:{
-                    title="you rented out your huts in the mountain";
-                subtitle="+60";}
-                break;
-                case 8:{
-                    title="you entered the werewolf wall and had to pay hospital bills";
-                subtitle="-80 + extra throw";}
-                break;
-                case 9: {
-                    title="you landed in a pit and paid someone to help you out";
-                subtitle="-50"; }
-                break;
-                case 10: {
-                    title="you found a goldmine! Congratulations, you're rich now";
-                subtitle="+650"; }
-                default: title="error";
-                subtitle="error";
+                case 1 -> {
+                    title = "your car landed in a crater. You must pay for repair";
+                    subtitle = "-100";
+                }
+                case 2 -> {
+                    title = "you entered the palace gates, and received a royal welcome gift";
+                    subtitle = "+100";
+                }
+                case 3 -> {
+                    title = "you are stranded in a cold dessert and must light up some cash to survive";
+                    subtitle = "-20";
+                }
+                case 4 -> {
+                    title = "you entered the Walled city and found some money on the road";
+                    subtitle = "+180";
+                }
+                case 5 -> {
+                    title = "you entered the monastery. This is a cash free zone";
+                    subtitle = "0";
+                }
+                case 6 -> {
+                    title = "you are in the black cave and had to buy a torch";
+                    subtitle = "-70";
+                }
+                case 7 -> {
+                    title = "you rented out your huts in the mountain";
+                    subtitle = "+60";
+                }
+                case 8 -> {
+                    title = "you entered the werewolf wall and had to pay hospital bills";
+                    subtitle = "-80 + extra throw";
+                }
+                case 9 -> {
+                    title = "you landed in a pit and paid someone to help you out";
+                    subtitle = "-50";
+                }
+                default -> {
+                    title = "you found a goldmine! Congratulations, you're rich now";
+                    subtitle = "+650";
+                }
             }
             head=Integer.toString(count);
             board.setTitleText(count, head);
@@ -101,7 +100,7 @@ public class Matador {
                 thrower=scanner.nextInt();
             }
         num1=1+dice.nextInt(6);
-        num2=1+dice.nextInt(6);
+        num2=1+dice2.nextInt(6);
         System.out.println("dice 1: " + num1);
         System.out.println("dice 1: " + num2);
         sum=num1+num2;
@@ -124,7 +123,7 @@ System.out.println("The sum of your throws is:" + sum);
             }
             System.out.println(board.getDescriptionText(sum-2));
             System.out.println(board.getSubText(sum-2));
-            System.out.println("Player 1's balance is now " + player1balance);
+            System.out.println(player1name + "'s balance is now " + player1balance);
 
         if(player1balance>3000)
             won=true;
@@ -145,7 +144,7 @@ System.out.println("The sum of your throws is:" + sum);
             }
             System.out.println(board.getDescriptionText(sum-2));
             System.out.println(board.getSubText(sum-2));
-            System.out.println("Player 2's balance is now " + player2balance);
+            System.out.println(player2name + "'s balance is now " + player2balance);
             if(player2balance>3000)
                 won=true;
         }
