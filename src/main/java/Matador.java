@@ -2,19 +2,20 @@ import java.util.Random;
 import java.util.*;
 //import gui_main.GUI;
 public class Matador {
-    public static void main (String[] args){
-      String player1name, player2name; // for player
-      int count, num1, num2;
-      boolean won=false;
-      Random dice = new Random();
-      Random dice2 = new Random();
-      Scanner scanner = new Scanner(System.in);
-      boolean player1turn; // general
-      String title, subtitle, head;
-      int player1balance=1000, player2balance=1000, sum; // for the bank
+    public static void main (String[] args) {
+        String player1name, player2name; // for player
+        int count, num1, num2;
+        boolean won = false;
+        Random dice = new Random();
+        Random dice2 = new Random();
+        Scanner scanner = new Scanner(System.in);
+        boolean player1turn, player2turn; // general
+        boolean player1NameEqualsPlayer2Name = false;
+        String title, subtitle, head;
+        int player1balance = 1000, player2balance = 1000, sum; // for the bank
 
-      //making the board
-        count=0;
+        //making the board
+        count = 0;
         while(count<11){
             switch (count) {
                 case 0 -> {
@@ -69,15 +70,17 @@ public class Matador {
             count++;
         }
         //players
-        System.out.println("input player 1 name");
+        System.out.println("Input player 1 name");
         player1name=scanner.next();
         player.addPlayer(player1name, 1000);
-        System.out.println("input player 2 name");
+        System.out.println("Input player 2 name");
         player2name=scanner.next();
-        while(player1name.equals(player2name)){
+        player1NameEqualsPlayer2Name=testIfEquals(player1name,player2name); /** 1 **/
+        while(player1NameEqualsPlayer2Name){
             System.out.println("Please input a unique name for each player");
             System.out.println("Input player 2 name");
             player2name=scanner.next();
+            player1NameEqualsPlayer2Name=testIfEquals(player1name,player2name);
         }
         player.addPlayer(player2name, 1000);
 
@@ -89,6 +92,7 @@ public class Matador {
             if(player1turn)
                 System.out.println(player1name + "'s turn");
             else
+                player2turn = true;
                 System.out.println(player2name + "'s turn");
             //determines who's turn it is
 
@@ -152,12 +156,16 @@ System.out.println("The sum of your throws is:" + sum);
         if(!won && sum!=10){
             player1turn= !player1turn;
         }
+
         }
 
         if(player1turn)
             System.out.println("Player 1 won");
         else
             System.out.println("Player 2 won");
+    }
+    public static boolean testIfEquals(String player1Name, String player2Name){
+        return player1Name.equalsIgnoreCase(player2Name);
     }
 
 }
